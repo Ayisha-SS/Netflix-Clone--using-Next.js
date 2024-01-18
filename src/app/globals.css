@@ -4,4 +4,10 @@
 
 body {
     font-family: sans-serif;
+    box-sizing: border-box;
+  }
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
   }

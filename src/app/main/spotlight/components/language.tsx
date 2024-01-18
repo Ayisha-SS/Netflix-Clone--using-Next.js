@@ -3,19 +3,19 @@ import React from 'react'
 export default function Language() {
   return (
     <>
-    
+        <div className='relative pr-4   flex-wrap inline-flex flex-col min-w-auto w-auto '>
+           <div className='flex border border-gray-500 text-base font-normal text-white rounded py-1 px-1 '>
 
-        <div className='relative flex-wrap inline-flex flex-col min-w-auto text-base font-normal text-white'>
-            <label htmlFor=""></label>
-                <div className='absolute w-4 h-4 left-1'>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className='overflow-hidden' data-name="Languages" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.7668 5.33333L10.5038 5.99715L9.33974 8.9355L8.76866 10.377L7.33333 14H9.10751L9.83505 12.0326H13.4217L14.162 14H16L12.5665 5.33333H10.8278H10.7668ZM10.6186 9.93479L10.3839 10.5632H11.1036H12.8856L11.6348 7.2136L10.6186 9.93479ZM9.52722 4.84224C9.55393 4.77481 9.58574 4.71045 9.62211 4.64954H6.41909V2H4.926V4.64954H0.540802V5.99715H4.31466C3.35062 7.79015 1.75173 9.51463 0 10.4283C0.329184 10.7138 0.811203 11.2391 1.04633 11.5931C2.55118 10.6795 3.90318 9.22912 4.926 7.57316V12.6667H6.41909V7.51606C6.81951 8.15256 7.26748 8.76169 7.7521 9.32292L8.31996 7.88955C7.80191 7.29052 7.34631 6.64699 6.9834 5.99715H9.06968L9.52722 4.84224Z" fill="currentColor"></path></svg>
-                </div>
-                <select name="language" id="language" className='pr-9 leading-5 min-w-auto w-auto bg-gray-900 bg-opacity-70 border border-gray-500 border-opacity-70'>
-                    <option lang="en" label='English' value="en-IN">English</option>
-                    <option lang="hi" label="हिन्दी" value="hi-IN">हिन्दी</option>
-                </select>
+				<label htmlFor=""></label>
+				<div className='absolute w-4 h-4 left-1'>
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className='' data-name="Languages" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.7668 5.33333L10.5038 5.99715L9.33974 8.9355L8.76866 10.377L7.33333 14H9.10751L9.83505 12.0326H13.4217L14.162 14H16L12.5665 5.33333H10.8278H10.7668ZM10.6186 9.93479L10.3839 10.5632H11.1036H12.8856L11.6348 7.2136L10.6186 9.93479ZM9.52722 4.84224C9.55393 4.77481 9.58574 4.71045 9.62211 4.64954H6.41909V2H4.926V4.64954H0.540802V5.99715H4.31466C3.35062 7.79015 1.75173 9.51463 0 10.4283C0.329184 10.7138 0.811203 11.2391 1.04633 11.5931C2.55118 10.6795 3.90318 9.22912 4.926 7.57316V12.6667H6.41909V7.51606C6.81951 8.15256 7.26748 8.76169 7.7521 9.32292L8.31996 7.88955C7.80191 7.29052 7.34631 6.64699 6.9834 5.99715H9.06968L9.52722 4.84224Z" fill="currentColor"></path></svg>
+				</div>
+				<select name="language" id="language" className='bg-transparent min-w-auto w-auto pl-6 leading-5'>
+					<option lang="en" label='English' value="en-IN" className='text-black bg-white min-w-auto '>English</option>
+					<option lang="hi" label="हिन्दी" value="hi-IN" className='text-black bg-white min-w-auto '>हिन्दी</option>
+				</select>
+		   </div>
         </div>
-   
     </>
   )
 }
