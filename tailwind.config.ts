@@ -8,10 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
       backgroundColor: {
         '35-35-35': 'rgb(35,35,35)',
       },
+      // backgroundImage: {
+      //   'login-poster':"url('.public/images/login-poster.jpg')"
+      // }
     },
   },
   plugins: [],
