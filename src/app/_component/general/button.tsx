@@ -2,13 +2,15 @@ import React from 'react'
 
 interface ButtonProps{
     label: string;
-    onClick?: ()=>void;
+    onClick?: ((e)=>void);
+    onSubmit?: ((e)=>void);
     className?: string;
     icon?: React.ReactNode; 
+    // type?: string;
 }
-const Button :React.FC<ButtonProps>= ({label,onClick,className,icon}) => {
+const Button :React.FC<ButtonProps>= ({label,onClick,className,icon,onSubmit}) => {
   return (
-    <button className={`text-white bg-red-600 ${className}`} onClick={onClick}>
+    <button className={`text-white bg-red-600 ${className}`} onClick={onClick} onSubmit={onSubmit}>
         {label}
         {icon}
     </button>
