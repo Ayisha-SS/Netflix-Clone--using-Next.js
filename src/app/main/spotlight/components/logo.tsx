@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Logo() {
   return (
     <div className=''>
-        <Image src={NetflixLogo} alt="Logo" className='w-40 '/>
+        <Image src={NetflixLogo} alt="Logo" className='w-40 xl:w-44'/>
     </div>
   )
 }

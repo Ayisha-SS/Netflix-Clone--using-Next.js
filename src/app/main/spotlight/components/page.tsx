@@ -10,7 +10,7 @@ export default function Spotlight() {
   return (
     <>
         <div className='relative'>
-            <div className='w-full h-[100vh]'>
+            <div className='w-full h-[100vh] '>
                 <Image src={Poster} className='w-full h-full' alt="Netflix" />
             </div>
             <div className='absolute w-full h-full top-0 right-0 left-0 bottom-0  bg-black bg-opacity-70 '>

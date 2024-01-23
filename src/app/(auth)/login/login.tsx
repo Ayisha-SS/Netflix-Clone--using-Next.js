@@ -9,33 +9,61 @@ import { auth } from "../../../../lib/firebase/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/navigation'
 
-export default function LoginFunction() {
+// export default function LoginFunction() {
 
-    const router = useRouter();
-    const lemailRef = useRef();
-    const lpasswordRef = useRef();
+//     const router = useRouter();
+//     const lemailRef = useRef();
+//     const lpasswordRef = useRef();
 
-    const login =(e) =>{
-        e.preventDefault();
-        const email = lemailRef.current.value;
-        const password = lpasswordRef.current.value;
+//     const login =(e) =>{
+//         e.preventDefault();
+//         const email = lemailRef.current.value;
+//         const password = lpasswordRef.current.value;
 
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            // ...
-            console.log(user);
-            alert("login successfully");
-            router.push("/main")
+//         signInWithEmailAndPassword(auth, email, password)
+//         .then((userCredential) => {
+//             // Signed in 
+//             const user = userCredential.user;
+//             // ...
+//             console.log(user);
+//             alert("login successfully");
+//             router.push("/movies")
             
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage)
-        });
-    }
+//         })
+//         .catch((error) => {
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//             alert(errorMessage)
+//         });
+//     }
+
+
+interface LoginFunctionProps {}
+
+const LoginFunction: React.FC<LoginFunctionProps> = () => {
+  const router = useRouter();
+  const lemailRef = useRef<HTMLInputElement>(null);
+  const lpasswordRef = useRef<HTMLInputElement>(null);
+
+  const login = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const email = lemailRef.current?.value || '';
+    const password = lpasswordRef.current?.value || '';
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        alert('Login successfully');
+        router.push('/movies');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  };
 
   return (
    <>
@@ -84,3 +112,6 @@ export default function LoginFunction() {
    </>
   )
 }
+
+
+export default LoginFunction;
