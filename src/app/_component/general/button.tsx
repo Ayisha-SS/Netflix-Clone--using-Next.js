@@ -2,8 +2,8 @@ import React from 'react'
 
 interface ButtonProps{
     label: string;
-    onClick?: ((e)=>void);
-    onSubmit?: ((e)=>void);
+    onClick?: ((e:any)=>void);
+    onSubmit?: ((e:any)=>void);
     className?: string;
     icon?: React.ReactNode; 
     // type?: string;

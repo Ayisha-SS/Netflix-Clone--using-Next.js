@@ -1,6 +1,5 @@
 "use client"
 import React, { useRef } from 'react'
-import Link from "next/link"
 import Button from '@/app/_component/general/button'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../../lib/firebase/firebase';
@@ -76,6 +75,7 @@ const SignupFunction: React.FC<SignupFunctionProps> = () => {
                 {/* <input type="text" placeholder='Username...' className='bg-white border rounded pt-4 px-4 h-[50px] text-base placeholder:text-[#8c8c8c]'/> */}
                 <input type="email" placeholder='Email...' ref={emailRef} className='bg-white border rounded pt-4 px-4 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
                 <input type="password" placeholder='Password...' ref={passwordRef} className='bg-white border rounded pt-4 px-4 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
+                
             </form>
                 <Button label='Sign Up' className='px-8 py-3 rounded-md mt-5 w-full ' onClick={signup}/>
         </div>

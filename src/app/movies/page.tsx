@@ -1,7 +1,6 @@
 import React from 'react'
 import MoviesNavbar from './movieNav/moviesNav'
 import Recommended from './movieNav/recommended'
-import SimpleSlider from './movieNav/rough'
 
 
 
@@ -19,10 +18,7 @@ export default function Movies() {
               experience.</p>
           </div>
           <Recommended/>
-
-          {/* <SimpleSlider/> */}
-         
-    
+             
         </div>
       </div>
     </>

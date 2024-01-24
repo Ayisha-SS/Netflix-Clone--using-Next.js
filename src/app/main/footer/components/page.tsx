@@ -7,7 +7,7 @@ export default function Footer() {
     <>
         <Divider/>
         <div className='bg-black'>
-            <div className='wrapper'>
+            <div className='wrapper lg:wrapper2'>
                 <FooterCntnt/>
             </div>
         </div>

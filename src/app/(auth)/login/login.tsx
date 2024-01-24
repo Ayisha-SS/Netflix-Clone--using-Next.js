@@ -52,7 +52,7 @@ const LoginFunction: React.FC<LoginFunctionProps> = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+// Signed in....
         const user = userCredential.user;
         console.log(user);
         alert('Login successfully');
@@ -76,7 +76,7 @@ const LoginFunction: React.FC<LoginFunctionProps> = () => {
                 <div className='m-16'>
                     <h3 className='text-3xl font-medium mb-7 text-white'>Sign In</h3>
                     <form action="#" className='flex flex-col gap-5'>
-                        <input type="email/number" placeholder='Email or phone number' ref={lemailRef} className='bg-[#333] rounded pt-4 px-5 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
+                        <input type="email/number" placeholder='Email or phone number' ref={lemailRef} className='bg-[#333] rounded pt-4 px-5 h-[50px] text-base placeholder:text-[#8c8c8c] '/>
                         <input type="password" placeholder='Password' ref={lpasswordRef} className='bg-[#333] rounded pt-4 px-5 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
                     </form>
                     <div>
