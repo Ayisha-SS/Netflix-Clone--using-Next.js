@@ -55,13 +55,18 @@ const LoginFunction: React.FC<LoginFunctionProps> = () => {
 // Signed in....
         const user = userCredential.user;
         console.log(user);
-        alert('Login successfully');
+        // alert('Login successfully');
         router.push('/movies');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        // alert(errorMessage);
+
+        const errorParagraph = document.getElementById('error-message');
+        if (errorParagraph) {
+          errorParagraph.textContent = errorMessage;
+        }   
       });
   };
 
@@ -78,6 +83,7 @@ const LoginFunction: React.FC<LoginFunctionProps> = () => {
                     <form action="#" className='flex flex-col gap-5'>
                         <input type="email/number" placeholder='Email or phone number' ref={lemailRef} className='bg-[#333] rounded pt-4 px-5 h-[50px] text-base placeholder:text-[#8c8c8c] '/>
                         <input type="password" placeholder='Password' ref={lpasswordRef} className='bg-[#333] rounded pt-4 px-5 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
+                        <p id='error-message' className='text-sm text-red-600'></p>
                     </form>
                     <div>
                         <Button label='Sign In' className='rounded text-base font-medium mt-8 mb-3 p-3 w-full' onClick={login}/>

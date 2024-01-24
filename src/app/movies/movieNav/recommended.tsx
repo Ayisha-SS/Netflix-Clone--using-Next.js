@@ -10,8 +10,8 @@ interface Movie {
 }
 
 export default function Recommended() {
-  const [movieList, setMovieList] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+    const [movieList, setMovieList] = useState<Movie[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
   const movies = () => {
     fetch(
@@ -24,7 +24,7 @@ export default function Recommended() {
       });
   };
 
-  useEffect(() => {
+  useEffect( () => {
     movies();
   }, []);
   console.log(movieList);
@@ -39,9 +39,9 @@ export default function Recommended() {
   return (
     <>
       <div className="pt-10">
-        <h3 className="text-white text-xl pb-4 cursor-pointer">
-          We Think You'll Love These
-        </h3>
+        {/* <h3 className="text-white text-xl pb-4 cursor-pointer">
+            We Think You'll Love These
+        </h3> */}
         <div className="mb-12">
           <div>
             <h4 className="text-white text-xl my-4">Popular on Netflix</h4>
@@ -49,18 +49,18 @@ export default function Recommended() {
           <div className="pb-5">
             <ul className="flex w-[100%]">
               {isLoading ? (
-                <p>Loading movies...</p>
+                <p className="text-base text-red-500">Loading movies...</p>
               ) : (
-                <Slider className=" w-[100%]" {...settings}>
-                  {movieList.slice(0, 20).map((item, index) => (
+                <Slider className="w-[100%]" {...settings}>
+                  {movieList.slice(0,20).map((item, index) => (
                     <li key={index} className="">
                       <div className="w-[80%]">
                         <img
-                          key={index}
-                          src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                          alt={item.title}
-                          className="mb-2 w-[300px]"
-                        />
+                            key={index}
+                            src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                            alt={item.title}
+                            className="mb-2 w-[300px] h-[250px]"
+                            />
                       </div>
                       <span className="text-white text-base">{item.title}</span>
                     </li>

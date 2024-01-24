@@ -6,7 +6,6 @@ interface ButtonProps{
     onSubmit?: ((e:any)=>void);
     className?: string;
     icon?: React.ReactNode; 
-    // type?: string;
 }
 const Button :React.FC<ButtonProps>= ({label,onClick,className,icon,onSubmit}) => {
   return (

@@ -4,6 +4,7 @@ import Button from '@/app/_component/general/button'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../../lib/firebase/firebase';
 import { useRouter } from 'next/navigation';
+import { error } from 'console';
 
 // export default function SignupFunction() {
 
@@ -49,13 +50,20 @@ const SignupFunction: React.FC<SignupFunctionProps> = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        alert('Signup successfully');
+        // alert('Signup successfully');
         router.push('/login');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        // alert(errorMessage);
+        // console.log(error.message); 
+
+        const errorParagraph = document.getElementById('error-message');
+        if (errorParagraph) {
+          errorParagraph.textContent = errorMessage;
+        }
+
       });
   };
 
@@ -75,7 +83,7 @@ const SignupFunction: React.FC<SignupFunctionProps> = () => {
                 {/* <input type="text" placeholder='Username...' className='bg-white border rounded pt-4 px-4 h-[50px] text-base placeholder:text-[#8c8c8c]'/> */}
                 <input type="email" placeholder='Email...' ref={emailRef} className='bg-white border rounded pt-4 px-4 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
                 <input type="password" placeholder='Password...' ref={passwordRef} className='bg-white border rounded pt-4 px-4 h-[50px] text-base placeholder:text-[#8c8c8c]'/>
-                
+               <p id='error-message' className='text-sm text-red-600'></p>
             </form>
                 <Button label='Sign Up' className='px-8 py-3 rounded-md mt-5 w-full ' onClick={signup}/>
         </div>

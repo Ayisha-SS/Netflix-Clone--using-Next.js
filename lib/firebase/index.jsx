@@ -1,10 +1,10 @@
-// auth.js
+// auth.js....
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import app from './firebase';
 
 const auth = getAuth(app);
 
-// Sign up function
+// Sign up function....
 export const signUp = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -16,7 +16,7 @@ export const signUp = async (email, password) => {
   }
 };
 
-// Log in function
+// Log in function....
 export const logIn = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
