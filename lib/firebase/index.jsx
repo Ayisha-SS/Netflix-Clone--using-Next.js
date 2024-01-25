@@ -33,21 +33,3 @@ export const logIn = async (email, password) => {
 };
 
 //log out function....
-export const Logout = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleLogout = async () => {
-      try {
-        await auth.signOut();
-        router.push("/main");
-      } catch(error) {
-        console.error("Error during logout:",error.message);
-      }
-    };
-
-    handleLogout();
-  },[router]);
-
-  return <div>Logging out...</div>
-};

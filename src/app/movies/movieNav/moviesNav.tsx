@@ -1,11 +1,19 @@
+"use client"
 import React from 'react'
 import NetflixLogo from "../../../../public/images/netflix-logo.png"
 import Image from 'next/image'
 import Button from '@/app/_component/general/button'
 import Link from 'next/link'
 
+import { auth } from '../../../../lib/firebase/firebase'
+import { signOut } from 'firebase/auth'
 
 export default function MoviesNavbar() {
+
+const logout = () =>{
+    auth.signOut();
+}
+
   return (
     <>
         <div className='bg-black '>
@@ -22,7 +30,7 @@ export default function MoviesNavbar() {
                             <Button label='JOIN NOW' className='bg-red-600 text-white py-2 px-6 text-xs rounded-sm'/>
                         </Link>
                         {/* <Link href="/login"> */}
-                            <Button label='SIGN OUT' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border'/>
+                            <Button label='SIGN OUT' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border' onClick={logout}/>
                         {/* </Link> */}
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import React from 'react'
 export default function Language() {
   return (
     <>
-        <div className='relative pr-4   flex-wrap inline-flex flex-col min-w-auto w-auto '>
+        <div className='relative pr-4 flex-wrap inline-flex flex-col min-w-auto w-auto '>
            <div className='flex border border-gray-500 text-base font-normal text-white rounded py-1 px-1 '>
 
 				<label htmlFor=""></label>

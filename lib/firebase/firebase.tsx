@@ -26,11 +26,9 @@ const firebaseConfig = {
 };
 
 //signout....
-if(!firebase.apps.length){
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-// export const auth = firebase.auth();
-export default firebase;
 
 
 export const app = initializeApp(firebaseConfig);

@@ -8,7 +8,7 @@ export default function EnjoyOnTv() {
     <>
     	<Divider/>
         <div className='bg-black '>
-            <div className='max-w-[83%] flex px-10 wrapper lg:wrapper2 lg:px-0 lg:py-10 md:flex-col md:py-6 sm:py-3 sm:flex-col'>
+            <div className='max-w-[83%] flex px-10 wrapper py-10'>
                 <Description/>
                 <Image/>
             </div>

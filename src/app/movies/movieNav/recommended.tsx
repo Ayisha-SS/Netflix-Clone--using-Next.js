@@ -31,25 +31,13 @@ export default function Recommended() {
   console.log(movieList);
 
 
-//   function SamplePrevArrow(props:any) {
-//     const { className, style, onClick } = props;
-//     return (
-//       <div
-//         className={className}
-//         style={{  display: "block",color:"red" }}
-//         onClick={onClick}
-//       />
-//     );
-//   }
-
   const settings = {
     dots:false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
-    // nextArrow: <SamplePrevArrow />,
-    // prevArrow: <SamplePrevArrow />
+    
   };
 
   return (
