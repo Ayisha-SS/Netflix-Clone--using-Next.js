@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import firebase from "firebase/compat/app";
 
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -23,6 +24,14 @@ const firebaseConfig = {
 
   measurementId: "G-VWG2BN7DSV"
 };
+
+//signout....
+if(!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig);
+}
+// export const auth = firebase.auth();
+export default firebase;
+
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

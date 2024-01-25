@@ -5,13 +5,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 interface Movie {
-  poster_path: string;
+//   poster_path: string;
+  backdrop_path:string;
   title: string;
 }
 
 export default function Recommended() {
-    const [movieList, setMovieList] = useState<Movie[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const [movieList, setMovieList] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const movies = () => {
     fetch(
@@ -24,16 +25,31 @@ export default function Recommended() {
       });
   };
 
-  useEffect( () => {
+  useEffect(() => {
     movies();
   }, []);
   console.log(movieList);
 
+
+//   function SamplePrevArrow(props:any) {
+//     const { className, style, onClick } = props;
+//     return (
+//       <div
+//         className={className}
+//         style={{  display: "block",color:"red" }}
+//         onClick={onClick}
+//       />
+//     );
+//   }
+
   const settings = {
+    dots:false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
+    // nextArrow: <SamplePrevArrow />,
+    // prevArrow: <SamplePrevArrow />
   };
 
   return (
@@ -49,18 +65,18 @@ export default function Recommended() {
           <div className="pb-5">
             <ul className="flex w-[100%]">
               {isLoading ? (
-                <p className="text-base text-red-500">Loading movies...</p>
+                <p className="text-base text-white">Loading movies...</p>
               ) : (
                 <Slider className="w-[100%]" {...settings}>
-                  {movieList.slice(0,20).map((item, index) => (
+                  {movieList.slice(0, 20).map((item, index) => (
                     <li key={index} className="">
-                      <div className="w-[80%]">
+                      <div className="w-[96%]">
                         <img
-                            key={index}
-                            src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                            alt={item.title}
-                            className="mb-2 w-[300px] h-[250px]"
-                            />
+                          key={index}
+                          src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                          alt={item.title}
+                          className="mb-2 w-[100%] h-[200px]"
+                        />
                       </div>
                       <span className="text-white text-base">{item.title}</span>
                     </li>

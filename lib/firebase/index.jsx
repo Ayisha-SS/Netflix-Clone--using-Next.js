@@ -1,6 +1,10 @@
 // auth.js....
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import app from './firebase';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+
+import { auth } from './firebase';
 
 const auth = getAuth(app);
 
@@ -26,4 +30,24 @@ export const logIn = async (email, password) => {
     console.error('Error logging in:', error.message);
     throw error;
   }
+};
+
+//log out function....
+export const Logout = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleLogout = async () => {
+      try {
+        await auth.signOut();
+        router.push("/main");
+      } catch(error) {
+        console.error("Error during logout:",error.message);
+      }
+    };
+
+    handleLogout();
+  },[router]);
+
+  return <div>Logging out...</div>
 };

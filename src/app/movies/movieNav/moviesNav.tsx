@@ -8,8 +8,9 @@ import Link from 'next/link'
 export default function MoviesNavbar() {
   return (
     <>
-        <div className='bg-black'>
-            <div className='flex justify-between movies-wrapper bg-black'>
+        <div className='bg-black '>
+            <div className='flex justify-between movies-wrapper'>
+                {/* <div className='flex justify-between'> */}
                 <div className='w-36 cursor-pointer'>
                     <Link href="/main">
                     <Image src={NetflixLogo} alt='Netflix-Logo'/></Link>
@@ -20,13 +21,13 @@ export default function MoviesNavbar() {
                         <Link href="/main">
                             <Button label='JOIN NOW' className='bg-red-600 text-white py-2 px-6 text-xs rounded-sm'/>
                         </Link>
-                        <Link href="/login">
-                            <Button label='SIGN IN' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border'/>
-                        </Link>
+                        {/* <Link href="/login"> */}
+                            <Button label='SIGN OUT' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border'/>
+                        {/* </Link> */}
                     </div>
                 </div>
+                {/* </div> */}
             </div>
-
         </div>
     </>
   )
