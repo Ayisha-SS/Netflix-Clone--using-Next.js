@@ -9,7 +9,7 @@ export default function MainHome() {
     <div>
     	<Spotlight/>
       <EnjoyOnTv/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }

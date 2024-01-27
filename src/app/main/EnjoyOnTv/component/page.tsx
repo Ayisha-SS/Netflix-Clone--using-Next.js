@@ -8,7 +8,7 @@ export default function EnjoyOnTv() {
     <>
     	<Divider/>
         <div className='bg-black '>
-            <div className='max-w-[83%] flex px-10 wrapper py-10'>
+            <div className='flex justify-between items-center py-10 wrapper max-md:flex-wrap max-lg:px-0  max-xl:px-10 '>
                 <Description/>
                 <Image/>
             </div>

@@ -3,7 +3,7 @@ import React from 'react'
 export default function Image() {
   return (
     <>
-      <div className='relative pl-[0.375rem]'>
+      <div className='relative '>
         <div>
             <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt='Tv-video'  />
         </div>

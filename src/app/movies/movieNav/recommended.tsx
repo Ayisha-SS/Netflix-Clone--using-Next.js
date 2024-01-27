@@ -1,79 +1,33 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import MovieSlider from "../general/slider";
 
-interface Movie {
-//   poster_path: string;
-  backdrop_path:string;
-  title: string;
-}
+
+
 
 export default function Recommended() {
-  const [movieList, setMovieList] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  
 
-  const movies = () => {
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=5bcc0dd557136d5008b5eebbc96092f6"
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setMovieList(json.results);
-        setIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    movies();
-  }, []);
-  console.log(movieList);
-
-
-  const settings = {
-    dots:false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+ 
+const movieSliderData = [
+    {genre:"Popular on Netflix",api_link:"https://image.tmdb.org/t/p/w500/",genreId:16},
+    {genre:"Sitcoms",api_link:"https://image.tmdb.org/t/p/w500/",genreId:28},
+    {genre:"K-Dramas",api_link:"https://image.tmdb.org/t/p/w500/",genreId:35},
+    {genre:"US TV Dramas",api_link:"https://image.tmdb.org/t/p/w500/",genreId:80},
+    {genre:"Made in India",api_link:"https://image.tmdb.org/t/p/w500/",genreId:10751},
+    {genre:"Critically Acclaimed TV Shows",api_link:"https://image.tmdb.org/t/p/w500/",genreId:10763},
+    {genre:"Children & Family TV",api_link:"https://image.tmdb.org/t/p/w500/",genreId:10762}
     
-  };
+]
+
+  
 
   return (
     <>
       <div className="pt-10">
-        {/* <h3 className="text-white text-xl pb-4 cursor-pointer">
-            We Think You'll Love These
-        </h3> */}
-        <div className="mb-12">
-          <div>
-            <h4 className="text-white text-xl my-4">Popular on Netflix</h4>
-          </div>
-          <div className="pb-5">
-            <ul className="flex w-[100%]">
-              {isLoading ? (
-                <p className="text-base text-white">Loading movies...</p>
-              ) : (
-                <Slider className="w-[100%]" {...settings}>
-                  {movieList.slice(0, 20).map((item, index) => (
-                    <li key={index} className="">
-                      <div className="w-[96%]">
-                        <img
-                          key={index}
-                          src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                          alt={item.title}
-                          className="mb-2 w-[100%] h-[200px]"
-                        />
-                      </div>
-                      <span className="text-white text-base">{item.title}</span>
-                    </li>
-                  ))}
-                </Slider>
-              )}
-            </ul>
-          </div>
-        </div>
+        {movieSliderData.map((sliderData,index) => (
+            <MovieSlider key={index} genre={sliderData.genre} api_link={sliderData.api_link} genreId={sliderData.genreId}/>
+        ))}
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 "use client"
 import Image from 'next/image'
 import MainHome from './main/page'
+import 'tailwindcss/tailwind.css'
 
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../../lib/firebase/firebase'
@@ -17,7 +18,7 @@ useEffect(()=>{
       const uid = user.uid;
       router.push('/movies')
     } else {
-      router.push("/login")
+      router.push("/main")
     }
   });
 })

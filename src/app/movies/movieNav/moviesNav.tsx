@@ -23,14 +23,15 @@ const logout = () =>{
                     <Link href="/main">
                     <Image src={NetflixLogo} alt='Netflix-Logo'/></Link>
                 </div>
-                <div className='font-sans text-white text-sm flex items-center '>
-                    <p>UNLIMITED TV SHOWS & MOVIES</p>
+                <div className='font-sans text-white  flex items-center '>
+                    <h5 className='2xl:text-sm'>UNLIMITED TV SHOWS & MOVIES</h5>
                     <div className='text-sm ml-3 flex gap-3'>
                         <Link href="/main">
                             <Button label='JOIN NOW' className='bg-red-600 text-white py-2 px-6 text-xs rounded-sm'/>
                         </Link>
                         {/* <Link href="/login"> */}
                             <Button label='SIGN OUT' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border' onClick={logout}/>
+                            {/* <Button label='SIGN IN' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border'/> */}
                         {/* </Link> */}
                     </div>
                 </div>
