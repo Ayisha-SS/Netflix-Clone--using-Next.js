@@ -10,13 +10,11 @@ interface Movie {
 
 interface SliderProps {
     genre:string;
-    api_link:string;
-    genreId:number;
-    
+    genreId:number; 
 }
 
 
-const MovieSlider :React.FC<SliderProps>=({genre,api_link,genreId}) => {
+const MovieSlider :React.FC<SliderProps>=({genre,genreId}) => {
 
 const [movieList, setMovieList] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +22,6 @@ const [movieList, setMovieList] = useState<Movie[]>([]);
   const movies = () => {
     fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=5bcc0dd557136d5008b5eebbc96092f6&with_genres=${genreId}`
-    
     )
     
       .then((res) => res.json())
@@ -67,7 +64,7 @@ const [movieList, setMovieList] = useState<Movie[]>([]);
                         <div className="w-[95%] h-[50%]">
                           <img
                             key={index}
-                            src={api_link + item.backdrop_path  }
+                            src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
                             alt={item.title}
                             className="mb-2 w-[100%] h-[200px]"
                           />
