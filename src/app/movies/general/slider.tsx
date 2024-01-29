@@ -8,6 +8,7 @@ import Link from 'next/link';
 interface Movie {
     backdrop_path:string;
     title: string;
+    id:number;
   }
 
 interface SliderProps {
@@ -19,7 +20,7 @@ interface Genre {
     name: string;
   }
 
-const MovieSlider :React.FC<SliderProps>=({genreId}) => {
+const MovieSlider :React.FC<SliderProps> = ({genreId}) => {
 
   const [movieList, setMovieList] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,11 +65,11 @@ const MovieSlider :React.FC<SliderProps>=({genreId}) => {
 
   return (
     <>
-         <div className="mb-12">
-          <div>
-            <h4 className="text-white text-xl my-4">{genreName}</h4>
-          </div>
-        <Link href="/movieTrailer">
+        <div className="mb-12">
+            <div>
+                <h4 className="text-white text-xl my-4">{genreName}</h4>
+            </div>
+        <Link href="/movieTrailer/[genreId]" as={`/moviesTrailer/${genreId}`} key={genreId}>
             <div className="pb-5">
                 <ul className="flex w-[100%]">
                 {isLoading ? (
@@ -94,7 +95,7 @@ const MovieSlider :React.FC<SliderProps>=({genreId}) => {
                 )}
                 </ul>
           </div>  
-        </Link>
+     </Link>
         </div>
     </>
   )

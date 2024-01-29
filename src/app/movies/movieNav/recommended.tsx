@@ -1,16 +1,11 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client" 
+import React from "react";
+import { useRouter } from "next/navigation";
 import MovieSlider from "../general/slider";
-import Footer from "@/app/main/footer/components/page";
 import FooterCntnt from "@/app/main/footer/components/footerCntnt";
 
-
-
-
 export default function Recommended() {
-  
-
- 
+  const navigation = useRouter();
 const movieSliderData = [
     {genreId:16},
     {genreId:28},
@@ -22,7 +17,7 @@ const movieSliderData = [
     {genreId:14},
     {genreId:10749},
     {genreId:99},   
-]
+];
 
   return (
     <>
