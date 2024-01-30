@@ -1,14 +1,22 @@
 import React from 'react'
-import Button from '../_component/general/button'
+import MoviesNavbar from '../moviesNav'
+import { MovieSlider } from '../../general/slider'
+import Button from '../../../_component/general/button'
+import Videos from './videos'
 
 
-export default function Trailer() {
+export default function MovieTrailer({ params }: { params: {  movieId:Number; } }){
 
-   return (
-   <>
+  const { movieId } = params;
+
+  return (
+    <div>
+      <MoviesNavbar/>
+      {/* <Trailer/> */}
+
       <div className='relative bg-cover bg-center h-screen z-auto' style={{backgroundImage:"url('/images/unicorn.jpg')"}}>
-        {/* <div className='bg-gradient-to-r from-gray-900 via-gray-00 to-gray-100 '> */}
-            <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '>
+        <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '>
+            {/* <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '> */}
             <div className='trailer-wrapper z-[1] pt-[120px]'>
                 <div className='mt-[56px]'>
                     <h1 className='text-2xl font-medium text-white'>Migration</h1>
@@ -39,8 +47,11 @@ export default function Trailer() {
             </div>
         </div>
       </div> 
-   </>
+
+      {/* <div className='bg-[#181818]'>
+        <Videos/>
+      </div> */}
+      
+    </div>
   )
 }
-
-

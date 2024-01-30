@@ -1,7 +1,7 @@
 "use client" 
 import React from "react";
 import { useRouter } from "next/navigation";
-import MovieSlider from "../general/slider";
+import { MovieSlider } from "../general/slider";
 import FooterCntnt from "@/app/main/footer/components/footerCntnt";
 
 export default function Recommended() {
@@ -23,7 +23,7 @@ const movieSliderData = [
     <>
       <div className="pt-10">
         {movieSliderData.map((sliderData,index) => (
-            <MovieSlider key={index} genreId={sliderData.genreId}/>
+            <MovieSlider key={index} genreId={sliderData.genreId} />
         ))}
       </div>
 
