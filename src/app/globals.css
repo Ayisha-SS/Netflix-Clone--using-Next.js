@@ -42,6 +42,11 @@ body {
   top: 0;
   z-index: -1;
 }
+.bgImage{
+  background-image: url("/images/unicorn.jpg");
+  background-position: center;
+  background-size: cover;
+}
 
 
 

@@ -8,7 +8,7 @@ import Link from 'next/link';
 interface Movie {
     backdrop_path:string;
     title: string;
-    id:number;
+    id:Number;
   }
 
 interface SliderProps {
@@ -69,7 +69,7 @@ const MovieSlider :React.FC<SliderProps> = ({genreId}) => {
             <div>
                 <h4 className="text-white text-xl my-4">{genreName}</h4>
             </div>
-        <Link href="/movieTrailer/[genreId]" as={`/moviesTrailer/${genreId}`} key={genreId}>
+        <Link href="/movieTrailer">
             <div className="pb-5">
                 <ul className="flex w-[100%]">
                 {isLoading ? (

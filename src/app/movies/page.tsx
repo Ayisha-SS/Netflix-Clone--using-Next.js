@@ -1,9 +1,6 @@
 import React from 'react'
 import MoviesNavbar from './movieNav/moviesNav'
 import Recommended from './movieNav/recommended'
-import Recommend from './movieNav/rough'
-
-
 
 export default function Movies() {
 
@@ -20,9 +17,7 @@ export default function Movies() {
               </p>
           </div>
           <Recommended/>
-          
-          {/* <Recommend/> */}
-             
+                       
         </div>
       </div>
     </>
