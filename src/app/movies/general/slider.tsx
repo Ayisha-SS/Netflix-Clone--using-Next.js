@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from 'next/link';
+import MovieTrailer from '../[movieId]/page';
 
 interface Movie {
     backdrop_path:string;
@@ -79,7 +80,8 @@ const movies = () => {
                     {movieList.slice(0, 20).map((item, index) => (
                       <li key={index} className="">
                         <div className='flex flex-col items-center '>
-                          <Link href="/movies/[movieId]" as={`/movies/${item.id}`} >
+                          {/* <Link href="/movies/[movieId]" as={`/movies/${item.id}`} > */}
+                            <Link href={`/movies/${item.id}`}>
                             <div className="w-[95%] h-[50%]">
                             <img
                                 key={index}

@@ -28,7 +28,7 @@ export default function Videos() {
                     <ul>
                         <Slider {...settings}>
                         <li>
-                            <div className='relative'><img src="\images\v1.jpg" alt="" className='w-[97%]'/></div>
+                            <div className='relative'><img src="\images\v1.jpg" alt="Videos" className='w-[97%]'/></div>
                             <svg viewBox="0 0 50 50" data-uia="additional-video-play-icon" className='absolute bottom-[30px] left-0 h-[90px] p-5'>
                                 <g fill="none" fill-rule="nonzero"><path fill="#fff" d="M25 50C11.2 50 0 38.8 0 25S11.2 0 25 0s25 11.2 25 25-11.2 25-25 25z"></path>
                                 <path fill="#000" d="M35.3 25l-15.6-8.6v17.2z"></path></g>
