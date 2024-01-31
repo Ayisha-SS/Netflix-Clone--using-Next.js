@@ -25,7 +25,6 @@ export default function MovieTrailer({ params }: { params: {  movieId:Number; } 
           <div className='trailer-wrapper '>
             <FooterCntnt/>
           </div>
-          
         </div>
     </div>
   )
