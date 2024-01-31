@@ -14,7 +14,6 @@ export default function Videos() {
         slidesToScroll: 2.2,   
       };
 
-
   return (
     <>
         <div className='trailer-wrapper pt-[130px] pb-[100px]'>
