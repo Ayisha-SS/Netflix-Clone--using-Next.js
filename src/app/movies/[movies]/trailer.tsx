@@ -19,9 +19,9 @@ interface LogoProps{
 }
 
 export const Trailer:React.FC<TrailerProps>=({movieid})=> {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const movieId = searchParams.get('movieId')
+  // const pathname = usePathname()
+  // const searchParams = useSearchParams()
+  // const movieId = searchParams.get('movieId')
 
   const [movieDetails, setMovieDetails] = useState<Trailer | null>([]);
   const [logoPath,setLogoPath] = useState<LogoProps | null>([])
@@ -80,17 +80,17 @@ console.log("result:",movieDetails?.original_title);
       <div className='relative h-screen z-auto' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path}')`,backgroundSize:'cover',backgroundPosition:'center'}}>
         <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '>
           <div className='trailer-wrapper z-[1] pt-[120px]'>
-            <div className='w-[30%] mt-[30px]'>
+            <div className='w-[30%] mt-[50px]'>
                 {logoPath && logoPath.logos && logoPath.logos[0] &&(<img src={`https://image.tmdb.org/t/p/original/${logoPath?.logos[0]?.file_path}`} alt="Logo" className='w-[60%]' />)}
             </div>
             
-            <div className='pt-[20px] pb-[30%]'>
+            <div className='pt-[60px] pb-[30%]'>
               <h1 className='text-2xl font-medium text-white'>{movieDetails?.original_title }</h1> 
-              <div className='pt-4 text-[#a3a3a3] '>
+              <div className='pt-5 text-[#a3a3a3] '>
                 <p>2023 | <span className='border border-[#a1a1a1] px-1'>U/A 7+</span> | 1 Season | Kids</p>
               </div>
               <div className='pt-4 text-white'>
-                <div className='w-[38%] mb-2'>
+                <div className='w-[38%] mb-4'>
                   <p>{movieDetails?.overview}</p>
                 </div>
                 <div className='text-base font-normal'>
@@ -98,7 +98,7 @@ console.log("result:",movieDetails?.original_title);
                 </div>
               </div>
             </div>
-            <div className='absolute -bottom-11 left-20 right-24 flex justify-between items-center bg-gradient-to-r from-[#252424] to-[#000] py-2 px-[25px] '>
+            <div className='absolute -bottom-14 left-20 right-24 flex justify-between items-center bg-gradient-to-r from-[#252424] to-[#000] py-2 px-[25px] '>
               <div className='flex items-center gap-2'>
                 <div className='w-10'>
                   <img src="\images\N.jpeg" alt="Netflix-logo" />
