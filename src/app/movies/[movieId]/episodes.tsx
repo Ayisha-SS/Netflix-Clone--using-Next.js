@@ -21,7 +21,7 @@ export default function Episodes() {
                     </div>
                     <p className='my-2'>1. Unicorn Academy</p>
                     <div className=' pt-1'>
-                        <p className='text-[#a3a3a3] text-xs '>At Unicorn Academy, regular teen Sophia has a lot to learn about fantastical creatures, but a dark force threatens to return and destroy unicorn magic!</p>
+                        <p className='text-[#a3a3a3] text-xs'>At Unicorn Academy, regular teen Sophia has a lot to learn about fantastical creatures, but a dark force threatens to return and destroy unicorn magic!</p>
                     </div>
                 </div>
                 <div>

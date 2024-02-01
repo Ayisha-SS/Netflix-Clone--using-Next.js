@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, {useRef} from 'react'
 import NetflixLogo from "../../../../public/images/netflix-logo.png"
 import Image from 'next/image'

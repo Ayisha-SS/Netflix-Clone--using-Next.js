@@ -1,12 +1,10 @@
 'use client';
-
 import React, { useState, useEffect } from 'react'
 import Button from '@/app/_component/general/button'
 import { usePathname, useSearchParams } from 'next/navigation'
 
 interface Trailer{
     title:string | [];
-
 }
 
 export const Trailer:React.FC = () => {
@@ -14,7 +12,7 @@ export const Trailer:React.FC = () => {
   const searchParams = useSearchParams()
   const movieId = searchParams.get('movieId')
 
-  const [movieDetails, setMovieDetails] = useState<Trailer>();
+  const [movieDetails, setMovieDetails] = useState<Trailer >();
 
 //   useEffect(() => {
 //     if (movieId) 
@@ -28,7 +26,6 @@ export const Trailer:React.FC = () => {
 //   }, [movieId])
 //   console.log("result:",movieDetails);
   
-
 const Movie = () =>{
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
     .then((res) => res.json())
@@ -44,8 +41,6 @@ useEffect(() => {
 },[movieId]);
 console.log("result:",movieDetails);
                
-
-
 //   if (!movieDetails) {
 //     return <p>Loading...</p>
 //   }
@@ -59,8 +54,7 @@ console.log("result:",movieDetails);
                 <img src="\images\film-logo.png" alt="Logo" />
             </div>
             <div className='mt-[50px]'>
-              <h1 className='text-2xl font-medium text-white'>{movieDetails?.title}</h1>
-             
+              <h1 className='text-2xl font-medium text-white'>Migration</h1> 
             </div>
             <div className='pt-4 '>
               <h3 className='text-2xl font-medium text-white'>Unicorn Academy</h3>
@@ -92,4 +86,4 @@ console.log("result:",movieDetails);
   )
 }
 
-export default Trailer
+export default Trailer;

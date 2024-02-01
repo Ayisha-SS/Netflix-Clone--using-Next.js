@@ -14,7 +14,7 @@ interface Movie {
 
 interface SliderProps {
     genreId:number; 
-}
+  }
 
 interface Genre {
     id: number;
@@ -27,32 +27,55 @@ export const MovieSlider: React.FC<SliderProps> = ({genreId}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [genres, setGenres] = useState<Genre[]>([]);
 
-const movies = () => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=5bcc0dd557136d5008b5eebbc96092f6&with_genres=${genreId}`
-    )
-    .then((res) => res.json())
-    .then((json) => {
-        setMovieList(json.results);
-        setIsLoading(false);
-    });
+// const movies = () => {
+//     fetch(
+//       `https://api.themoviedb.org/3/discover/movie?api_key=5bcc0dd557136d5008b5eebbc96092f6&with_genres=${genreId}`
+//     )
+//     .then((res) => res.json())
+//     .then((json) => {
+//         setMovieList(json.results);
+//         setIsLoading(false);
+//     });
     
-  };
+//   };
 
-  const Genres = () => {
-    fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=5bcc0dd557136d5008b5eebbc96092f6`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setGenres(json.genres);
-      });
-  };
+//   const Genres = () => {
+//     fetch(
+//       `https://api.themoviedb.org/3/genre/movie/list?api_key=5bcc0dd557136d5008b5eebbc96092f6`
+//     )
+//       .then((res) => res.json())
+//       .then((json) => {
+//         setGenres(json.genres);
+//       });
+//   };
 
-  useEffect(() => {
-    Genres();
-    movies();
+//   useEffect(() => {
+//     Genres();
+//     movies();
+//   }, [genreId]);
+
+useEffect(() => {
+	const fetchMovies = fetch(
+	  `https://api.themoviedb.org/3/discover/movie?api_key=5bcc0dd557136d5008b5eebbc96092f6&with_genres=${genreId}`
+	).then((res) => res.json());
+  
+	const fetchGenres = fetch(
+	  `https://api.themoviedb.org/3/genre/movie/list?api_key=5bcc0dd557136d5008b5eebbc96092f6`
+	).then((res) => res.json());
+  
+	Promise.all([fetchMovies, fetchGenres])
+	  .then(([moviesResponse, genresResponse]) => {
+		setMovieList(moviesResponse.results);
+		setGenres(genresResponse.genres);
+		setIsLoading(false);
+	  })
+	  .catch((error) => {
+		console.error('Error fetching data:', error);
+		setIsLoading(false);
+	  });
   }, [genreId]);
+  
+
   console.log(movieList);
 
   const genreName = genres.find((genre) => genre.id === genreId)?.name || 'Unknown';
@@ -79,20 +102,19 @@ const movies = () => {
                   <Slider className="w-[100%]" {...settings}>
                     {movieList.slice(0, 20).map((item, index) => (
                       <li key={index} className="">
-                        <div className='flex flex-col items-center '>
-                          {/* <Link href="/movies/[movieId]" as={`/movies/${item.id}`} > */}
-                            <Link href={`/movies/${item.id}`}>
-                            <div className="w-[95%] h-[50%]">
-                            <img
-                                key={index}
-                                src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                                alt={item.title}
-                                className="mb-2 w-[100%] h-[200px]"
-                            />
+                        <Link href={`/movies/${item.id}`}>
+                            <div className='flex flex-col items-center '>
+                                <div className="w-[95%] h-[50%]">
+                                <img
+                                    key={index}
+                                    src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                                    alt={item.title}
+                                    className="mb-2 w-[100%] h-[200px]"
+                                />
+                                </div>
+                                <span className="text-white text-base">{item.title}</span>
                             </div>
-                            <span className="text-white text-base">{item.title}</span>
                         </Link>
-                        </div>
                         </li>
                     ))}
                     </Slider>

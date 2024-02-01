@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useRef } from 'react'
 import Button from '@/app/_component/general/button'
 import { createUserWithEmailAndPassword } from "firebase/auth";

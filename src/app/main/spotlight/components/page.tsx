@@ -8,8 +8,6 @@ import Content from './content'
 
 export default function Spotlight() {
 
-    
-
   return (
     <>
         <div className='relative '>

@@ -10,22 +10,20 @@ import FooterCntnt from '@/app/main/footer/components/footerCntnt'
 import Footer from '@/app/main/footer/components/page'
 
 
-export default function MovieTrailer({ params }: { params: {  movieId:Number; } }){
-
-  const { movieId } = params;
+export default function MovieTrailer(){
   
   return (
     <div>
-      <MoviesNavbar/>
-     <Trailer/>
-      <div className='bg-[#181818]'>
-          <Videos/>
-          <Episodes/>
-          <MoreSimilar/>
-          <div className='trailer-wrapper '>
-            <FooterCntnt/>
-          </div>
-        </div>
+        <MoviesNavbar/>
+        <Trailer/>
+            <div className='bg-[#181818]'>
+                <Videos/>
+                <Episodes/>
+                <MoreSimilar/>
+                <div className='trailer-wrapper '>
+                    <FooterCntnt/>
+                </div>
+            </div>
     </div>
   )
 }
