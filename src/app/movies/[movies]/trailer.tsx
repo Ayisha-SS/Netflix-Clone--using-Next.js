@@ -3,16 +3,22 @@ import React, { useState, useEffect } from 'react'
 import Button from '@/app/_component/general/button'
 import { usePathname, useSearchParams } from 'next/navigation'
 
+interface TrailerProps {
+	params: { movies: string };
+	movieid:number;
+}
 interface Trailer{
-    title:string | [];
+	original_title:string;
+    // title:string | [];
 }
 
-export const Trailer:React.FC = () => {
+export const Trailer:React.FC<TrailerProps>=({params,movieid})=> {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const movieId = searchParams.get('movieId')
 
-  const [movieDetails, setMovieDetails] = useState<Trailer >();
+  const [movieDetails, setMovieDetails] = useState<Trailer | null>(null);
+  const [loading, setloading] = useState(true);
 
 //   useEffect(() => {
 //     if (movieId) 
@@ -27,19 +33,23 @@ export const Trailer:React.FC = () => {
 //   console.log("result:",movieDetails);
   
 const Movie = () =>{
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
+    fetch(`https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
     .then((res) => res.json())
     .then((json) => {
         setMovieDetails(json)
+		
     });
+	if(movieDetails){
+		setloading(false)
+	}
 } ;
 
 useEffect(() => {
-    if(movieId){
-        Movie();
-    }
-},[movieId]);
-console.log("result:",movieDetails);
+    
+       Movie();
+	   
+	},[]);
+console.log("result:",movieDetails?.original_title);
                
 //   if (!movieDetails) {
 //     return <p>Loading...</p>
@@ -47,6 +57,8 @@ console.log("result:",movieDetails);
 
   return (
     <>
+	{
+		loading?<p>loading....</p>:
       <div className='relative bg-cover bg-center h-screen z-auto' style={{ backgroundImage: "url('/images/unicorn.jpg')" }}>
         <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '>
           <div className='trailer-wrapper z-[1] pt-[120px]'>
@@ -54,10 +66,14 @@ console.log("result:",movieDetails);
                 <img src="\images\film-logo.png" alt="Logo" />
             </div>
             <div className='mt-[50px]'>
-              <h1 className='text-2xl font-medium text-white'>Migration</h1> 
+              <h1 className='text-2xl font-medium text-white'>{movieDetails.id }</h1> 
+			  {/* <h2>{movieid}</h2> */}
             </div>
             <div className='pt-4 '>
               <h3 className='text-2xl font-medium text-white'>Unicorn Academy</h3>
+			 
+
+
               <div className='pt-4 text-[#a3a3a3] '>
                 <p>2023 | <span className='border border-[#a1a1a1] px-1'>U/A 7+</span> | 1 Season | Kids</p>
               </div>
@@ -82,8 +98,19 @@ console.log("result:",movieDetails);
           </div>
         </div>
       </div> 
+}
     </>
   )
 }
 
 export default Trailer;
+
+// import React from 'react'
+
+// export default function Trailer() {
+//   return (
+// 	<div>
+// 		{movieid}
+// 	</div>
+//   )
+// }

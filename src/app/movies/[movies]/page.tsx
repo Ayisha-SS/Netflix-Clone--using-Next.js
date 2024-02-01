@@ -1,23 +1,23 @@
 import React from 'react'
 import MoviesNavbar from '../movieNav/moviesNav'
-import { MovieSlider } from '../general/slider'
-import Button from '../../_component/general/button'
 import Videos from './videos'
 import Trailer from "./trailer"
 import Episodes from './episodes'
 import MoreSimilar from './similar'
 import FooterCntnt from '@/app/main/footer/components/footerCntnt'
-import Footer from '@/app/main/footer/components/page'
 
 
-export default function MovieTrailer(){
+export default function MovieTrailer({params}:{params :{movies:string}}){
+//  console.log();
+ 
   
   return (
-    <div>
+    <div >
         <MoviesNavbar/>
-        <Trailer/>
+        <Trailer movieid={params.movies}/>
             <div className='bg-[#181818]'>
                 <Videos/>
+        {/* <h1 className='text-white'>{params.movies}</h1> */}
                 <Episodes/>
                 <MoreSimilar/>
                 <div className='trailer-wrapper '>
