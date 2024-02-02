@@ -8,30 +8,51 @@ interface SimilarProps {
     movieid: number;
   }
 interface VideoProps{
-    backdrops:{file_path:string}[];
-    original_title:string;
+    file_path:string;
+    
 }
-export const Videos:React.FC<SimilarProps> = ({movieid}) => {
+interface TitleProps{
+	original_title:string;
+	overview:string;
+}
+export const Videos: React.FC<SimilarProps> = ({movieid}) => {
 
     const [videos,setVideos] = useState<VideoProps[]>([]);
     const [loading, setLoading] = useState(true);
-
+	const [title,setTitle] = useState<TitleProps>([])
 
     const video = async () =>{
         try{
           const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}/images?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
           const json = await response.json();
-          setVideos(json.results || []);
+          setVideos(json.backdrops || []);
           setLoading(false);
         }catch(error){
           console.error("Error fetching movie data:",error);
           setLoading(false);
         }
       };
-      useEffect( () => {
-        video();
-      },[movieid]);
-      console.log("Similar Movies:", Videos);
+	  
+	  const Title = async () =>{
+		  try{
+			  const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
+			  const json = await response.json();
+			  setTitle(json);
+			  setLoading(false);
+			}catch(error){
+				console.error("Error fetching movie data:",error);
+				setLoading(false); 
+			}
+		} ;
+		
+	useEffect( () => {
+			Promise.all([video(), Title()])
+			.then(() => {
+				setLoading(false)
+			});
+		},[movieid]);
+
+    console.log("Similar Movies:", Videos);
  
   const settings = {
     dots: false,
@@ -40,7 +61,6 @@ export const Videos:React.FC<SimilarProps> = ({movieid}) => {
     slidesToShow: 2.2,
     slidesToScroll: 2.2,
   };
-
   
 //   const videoData = [
 //     {
@@ -57,34 +77,29 @@ export const Videos:React.FC<SimilarProps> = ({movieid}) => {
 //     },
 //   ];
 
-  
   return (
     <>
       <div className='trailer-wrapper pt-[130px] pb-[100px]'>
         <div className='border-y-2 border-[#777] py-6'>
           <p className='text-[#a3a3a3] text-base font-normal max-w-[500px] mx-auto text-center'>
-            This fantastical animated adventure series is based on the books by Julie Sykes.
+		  {title.overview && title.overview.split('. ')[0] + '.'}
           </p>
         </div>
-
         <div className='mt-[100px]'>
           <div className='font-sans mb-[50px]'>
             <h2 className='text-white font-medium text-3xl'>
               Videos
               <span className='text-[#a3a3a3] ml-1 mr-2'>|</span>
-              <span className='text-[#a3a3a3] text-xl font-normal'>Unicorn Academy</span>
+              <span className='text-[#a3a3a3] text-xl font-normal'>{title.original_title}</span>
             </h2>
           </div>
-
           <div>
             <ul>
-              
               <Slider {...settings}>
-                
                 {videos.map((video, index) => (
                   <li key={index}>
                     <div className='relative'>
-                      <img src={`https://image.tmdb.org/t/p/w500/${video.backdrops.file_path}`} alt={`Video ${index}`} className='w-[97%]' />
+                      <img src={`https://image.tmdb.org/t/p/w500/${video.file_path}`} alt={`Video ${index}`} className='w-[97%]' />
                     </div>
                     <svg viewBox="0 0 50 50" data-uia="additional-video-play-icon" className='absolute bottom-[30px] left-0 h-[90px] p-5'>
                       <g fill="none" fill-rule="nonzero">
@@ -92,7 +107,7 @@ export const Videos:React.FC<SimilarProps> = ({movieid}) => {
                         <path fill="#000" d="M35.3 25l-15.6-8.6v17.2z"></path>
                       </g>
                     </svg>
-                    <h2 className='text-white mt-2 font-sans font-normal text-base'>{video.original_title}</h2>
+                    <h2 className='text-white mt-2 font-sans font-normal text-base'>{title.original_title}</h2>
                   </li>
                 ))}
               </Slider>
