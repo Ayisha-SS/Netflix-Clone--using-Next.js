@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from 'next/link';
-import MovieTrailer from '../[movies]/page';
 
 interface Movie {
     backdrop_path:string;
@@ -26,33 +25,6 @@ export const MovieSlider: React.FC<SliderProps> = ({genreId}) => {
   const [movieList, setMovieList] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [genres, setGenres] = useState<Genre[]>([]);
-
-// const movies = () => {
-//     fetch(
-//       `https://api.themoviedb.org/3/discover/movie?api_key=5bcc0dd557136d5008b5eebbc96092f6&with_genres=${genreId}`
-//     )
-//     .then((res) => res.json())
-//     .then((json) => {
-//         setMovieList(json.results);
-//         setIsLoading(false);
-//     });
-    
-//   };
-
-//   const Genres = () => {
-//     fetch(
-//       `https://api.themoviedb.org/3/genre/movie/list?api_key=5bcc0dd557136d5008b5eebbc96092f6`
-//     )
-//       .then((res) => res.json())
-//       .then((json) => {
-//         setGenres(json.genres);
-//       });
-//   };
-
-//   useEffect(() => {
-//     Genres();
-//     movies();
-//   }, [genreId]);
 
 useEffect(() => {
 	const fetchMovies = fetch(

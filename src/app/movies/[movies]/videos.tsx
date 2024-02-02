@@ -79,7 +79,7 @@ export const Videos: React.FC<SimilarProps> = ({movieid}) => {
 
   return (
     <>
-      <div className='trailer-wrapper pt-[130px] pb-[100px]'>
+      <div className='trailer-wrapper pt-[130px] pb-[50px]'>
         <div className='border-y-2 border-[#777] py-6'>
           <p className='text-[#a3a3a3] text-base font-normal max-w-[500px] mx-auto text-center'>
 		  {title.overview && title.overview.split('. ')[0] + '.'}

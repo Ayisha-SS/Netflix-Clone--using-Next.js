@@ -5,12 +5,11 @@ import Trailer from "./trailer"
 import { Episodes } from './episodes'
 import { MoreSimilar }  from './similar'
 import FooterCntnt from '@/app/main/footer/components/footerCntnt'
+import MovieFooter from '../footer/page'
 
 
 export default function MovieTrailer({params}:{params :{movies:string}}){
-//  console.log();
  
-  
   return (
     <div >
         <MoviesNavbar/>
@@ -21,7 +20,7 @@ export default function MovieTrailer({params}:{params :{movies:string}}){
           <MoreSimilar movieid={params.movies} />
           </div>
           <div className=' bg-[#181818]'>
-            <FooterCntnt />
+            <MovieFooter/>
           </div>
     </div>
   )

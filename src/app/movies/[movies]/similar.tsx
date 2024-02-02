@@ -9,17 +9,7 @@ interface MovieProps{
 }
 
 export const MoreSimilar: React.FC<SimilarProps> = ({ movieid }) => {
-  // const similarImages = [
-  //   '/images/v1.jpg',
-  //   '/images/v2.jpg',
-  //   '/images/v3.jpg',
-  //   '/images/v1.jpg',
-  //   '/images/v2.jpg',
-  //   '/images/v3.jpg',
-  //   '/images/v1.jpg',
-  //   '/images/v2.jpg',
-  // ];
-
+ 
   const [similarMovies,setSimilarMovies] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState(true);
 

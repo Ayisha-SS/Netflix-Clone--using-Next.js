@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { MovieSlider } from "../general/slider";
-import FooterCntnt from "@/app/main/footer/components/footerCntnt";
+import MovieFooter from "../footer/page";
 
 export default function Recommended() {
   const navigation = useRouter();
@@ -27,7 +27,7 @@ const movieSliderData = [
         ))}
       </div>
 
-      <FooterCntnt/>
+      <MovieFooter/>
     </>
   );
 }

@@ -10,6 +10,7 @@ interface EpisodeProps{
 interface TitleProps{
 	original_title:string;
 	overview:string;
+    release_date:number;
 }
 
 export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
@@ -51,7 +52,7 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
 
     return (
       <>
-        <div className='pt-[50px] pb-[50px] trailer-wrapper text-white'>
+        <div className='pt-[30px] pb-[50px] trailer-wrapper text-white'>
           <div className='font-sans mb-[10px]'>
             <h2 className='text-white font-medium text-3xl'>
               Episodes
@@ -63,9 +64,9 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
             <p>Chapter 1</p>
           </div>
           <div>
-            <h5>Release year: 2023</h5>
+            <h5>Release year: {title.release_date && title.release_date.split('-')[0]}</h5>
             <p className='text-[#a3a3a3] text-sm w-[46%] my-1'>
-            {title.overview && title.overview.split('. ')[0] + '.'}            </p>
+            {title.overview && title.overview.split('. ')[0] + '.'} </p>
           </div>
           <div className='pt-4 inline-grid grid-cols-4 gap-4'>
             {episodes.map((episode,index) => (
@@ -73,10 +74,10 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
                 <div className='w-[100%]'>
                   <img src={`https://image.tmdb.org/t/p/w500/${episode.file_path}`}  alt={`Episode ${index}`} />
                 </div>
-                <p className='my-2'>{index}. {title.original_title}</p>
+                <p className='my-2'>{index + 1}. {title.original_title}</p>
                 <div className='pt-1'>
                   <p className='text-[#a3a3a3] text-xs'>
-                    At Unicorn Academy, regular teen Sophia has a lot to learn about fantastical creatures, but a dark force threatens to return and destroy unicorn magic!
+                  {title.overview && title.overview.split('. ')[0] + '.'}
                   </p>
                 </div>
               </div>

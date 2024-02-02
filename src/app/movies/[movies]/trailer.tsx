@@ -1,44 +1,30 @@
 'use client';
 import React, { useState, useEffect } from 'react'
 import Button from '@/app/_component/general/button'
-import { usePathname, useSearchParams } from 'next/navigation'
 
 interface TrailerProps {
-	// params: { movies: string };
 	movieid:number;
 }
 interface Trailer{
 	original_title:string;
   overview:string;
-  // logo_path:string;
   poster_path:string;
   backdrop_path:string;
 }
 interface LogoProps{
   logos:{file_path:string}[];
 }
+interface CastProps{
+  cast:{name:string}[];
+}
 
 export const Trailer:React.FC<TrailerProps>=({movieid})=> {
-  // const pathname = usePathname()
-  // const searchParams = useSearchParams()
-  // const movieId = searchParams.get('movieId')
 
   const [movieDetails, setMovieDetails] = useState<Trailer | null>([]);
-  const [logoPath,setLogoPath] = useState<LogoProps | null>([])
+  const [logoPath,setLogoPath] = useState<LogoProps | null>([]);
+  const [castName,setCastName] = useState<CastProps | null>([]);
   const [loading, setLoading] = useState(true);
 
-//   useEffect(() => {
-//     if (movieId) 
-//     {
-//       fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
-//         .then((res) => res.json())
-//         .then((json) => {
-//           setMovieDetails(json.results)
-//         });
-//     }
-//   }, [movieId])
-//   console.log("result:",movieDetails);
-  
 const Movie = async () =>{
   try{
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
@@ -65,13 +51,25 @@ const Logo = async () => {
   }
 };
 
+const Cast = async () => {
+  try{
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}/credits?api_key=5bcc0dd557136d5008b5eebbc96092f6`);
+    const json = await response.json();
+    setCastName(json);
+    setLoading(false);
+  } catch(error){
+        console.error("Error fetching data:",error);
+    
+  }
+};
+
 useEffect(() => {
        Movie();
        Logo();
-	},[]);
+       Cast();
+	},[movieid]);
 console.log("result:",movieDetails?.original_title);
                
-
   return (
     <>
 	{
@@ -94,7 +92,7 @@ console.log("result:",movieDetails?.original_title);
                   <p>{movieDetails?.overview}</p>
                 </div>
                 <div className='text-base font-normal'>
-                  <p><span className='text-[#a3a3a3] mr-1'>Starring:</span> Sara Garcia,Sadie Laflamme-Snow,Kamaia Fairburn</p>
+                  <p><span className='text-[#a3a3a3] mr-1'>Starring:</span> {castName?.cast?.name}</p>
                 </div>
               </div>
             </div>
@@ -111,19 +109,9 @@ console.log("result:",movieDetails?.original_title);
           </div>
         </div>
       </div> 
-}
+    }
     </>
   )
 }
 
 export default Trailer;
-
-// import React from 'react'
-
-// export default function Trailer() {
-//   return (
-// 	<div>
-// 		{movieid}
-// 	</div>
-//   )
-// }
