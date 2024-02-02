@@ -47,8 +47,7 @@ const Movie = async () =>{
     setLoading(false);
   }catch(error){
     console.error("Error fetching movie data:",error);
-    setLoading(false);
-    
+    setLoading(false); 
   }
 } ;
 
@@ -77,20 +76,21 @@ console.log("result:",movieDetails?.original_title);
     <>
 	{
 		loading?<p>loading....</p>:
-      <div className='relative h-screen z-auto' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path}')`,backgroundSize:'cover',backgroundPosition:'center'}}>
+      <div className='relative h-screen ' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path}')`,backgroundSize:'cover',backgroundPosition:'center'}}>
         <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '>
-          <div className='trailer-wrapper z-[1] pt-[120px]'>
-            <div className='w-[30%] mt-[50px]'>
-                {logoPath && logoPath.logos && logoPath.logos[0] &&(<img src={`https://image.tmdb.org/t/p/original/${logoPath?.logos[0]?.file_path}`} alt="Logo" className='w-[60%]' />)}
+          <div className='trailer-wrapper z-[1] pt-[120px] '>
+            <div className='flex flex-col justify-center w-full'>
+            <div className='w-[30%] mb-[50px]'>
+                {logoPath && logoPath.logos && logoPath.logos[0] &&(<img src={`https://image.tmdb.org/t/p/original/${logoPath?.logos[0]?.file_path}`} alt="Logo" width={170} />)}
             </div>
             
-            <div className='pt-[60px] pb-[30%]'>
+            <div className='pt-[20px] pb-[30%]'>
               <h1 className='text-2xl font-medium text-white'>{movieDetails?.original_title }</h1> 
               <div className='pt-5 text-[#a3a3a3] '>
                 <p>2023 | <span className='border border-[#a1a1a1] px-1'>U/A 7+</span> | 1 Season | Kids</p>
               </div>
               <div className='pt-4 text-white'>
-                <div className='w-[38%] mb-4'>
+                <div className='w-[50%] mb-4'>
                   <p>{movieDetails?.overview}</p>
                 </div>
                 <div className='text-base font-normal'>
@@ -107,6 +107,7 @@ console.log("result:",movieDetails?.original_title);
               </div> 
               <Button label='JOIN NOW' className='bg-red-600 text-white py-3 px-6 text-sm rounded'/>
             </div>
+          </div>
           </div>
         </div>
       </div> 

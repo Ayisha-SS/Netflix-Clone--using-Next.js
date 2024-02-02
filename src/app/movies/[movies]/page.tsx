@@ -20,8 +20,8 @@ export default function MovieTrailer({params}:{params :{movies:string}}){
           <Episodes/>
           <MoreSimilar movieid={params.movies} />
           </div>
-          <div className='trailer-wrapper bg-[#181818]'>
-            <FooterCntnt/>
+          <div className=' bg-[#181818]'>
+            <FooterCntnt />
           </div>
     </div>
   )
