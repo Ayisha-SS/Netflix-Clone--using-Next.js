@@ -9,7 +9,7 @@ interface SimilarProps {
   }
 interface VideoProps{
     file_path:string;
-    
+    key:string;
 }
 interface TitleProps{
 	original_title:string;
@@ -19,11 +19,15 @@ export const Videos: React.FC<SimilarProps> = ({movieid}) => {
 
     const [videos,setVideos] = useState<VideoProps[]>([]);
     const [loading, setLoading] = useState(true);
-	const [title,setTitle] = useState<TitleProps>([])
+	  const [title,setTitle] = useState<TitleProps >({
+      original_title:'string',
+      overview:'string',
+    })
 
-    const video = async () =>{
+    const getVideo = async () =>{
         try{
           const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}/images?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
+          // const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}/videos?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
           const json = await response.json();
           setVideos(json.backdrops || []);
           setLoading(false);
@@ -46,13 +50,13 @@ export const Videos: React.FC<SimilarProps> = ({movieid}) => {
 		} ;
 		
 	useEffect( () => {
-			Promise.all([video(), Title()])
+			Promise.all([getVideo(), Title()])
 			.then(() => {
 				setLoading(false)
 			});
 		},[movieid]);
 
-    console.log("Similar Movies:", Videos);
+    console.log("Videos:", Videos);
  
   const settings = {
     dots: false,
@@ -82,7 +86,11 @@ export const Videos: React.FC<SimilarProps> = ({movieid}) => {
       <div className='trailer-wrapper pt-[130px] pb-[50px]'>
         <div className='border-y-2 border-[#777] py-6'>
           <p className='text-[#a3a3a3] text-base font-normal max-w-[500px] mx-auto text-center'>
-		  {title.overview && title.overview.split('. ')[0] + '.'}
+            {title.overview && 
+            title.overview
+            .split('')
+            .slice(0,100)
+            .join('') + '...'}
           </p>
         </div>
         <div className='mt-[100px]'>
@@ -100,6 +108,11 @@ export const Videos: React.FC<SimilarProps> = ({movieid}) => {
                   <li key={index}>
                     <div className='relative'>
                       <img src={`https://image.tmdb.org/t/p/w500/${video.file_path}`} alt={`Video ${index}`} className='w-[97%]' />
+                      {/* <iframe 
+                        src={`https://www.youtube.com/embed/${video.key}`} 
+                        width={97}
+                        title={`Video ${index}`} 
+                      ></iframe> */}
                     </div>
                     <svg viewBox="0 0 50 50" data-uia="additional-video-play-icon" className='absolute bottom-[30px] left-0 h-[90px] p-5'>
                       <g fill="none" fill-rule="nonzero">

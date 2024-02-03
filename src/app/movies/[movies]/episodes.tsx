@@ -10,16 +10,19 @@ interface EpisodeProps{
 interface TitleProps{
 	original_title:string;
 	overview:string;
-    release_date:number;
+  release_date:string;
 }
 
 export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
 
     const [episodes,setEpisodes] = useState<EpisodeProps[]>([]);
     const [loading,setLoading] = useState(true);
-    const [title,setTitle] = useState<TitleProps>([]);
+    const [title,setTitle] = useState<TitleProps >({original_title:'string',
+      overview:'string',
+      release_date:'string',
+    });
 
-    const Episode = async () =>{
+    const fetchEpisodes = async () =>{
         try{
           const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}/images?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
           const json = await response.json();
@@ -31,7 +34,7 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
         }
       };
 	  
-	  const Title = async () =>{
+	  const fetchTitle = async () =>{
 		  try{
 			  const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
 			  const json = await response.json();
@@ -44,11 +47,16 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
 		} ;
 		
 	useEffect( () => {
-			Promise.all([Episode(), Title()])
+			Promise.all([fetchEpisodes(), fetchTitle()])
 			.then(() => {
 				setLoading(false)
 			});
 		},[movieid]);
+
+    const isEnglish = (text: string) => {
+      const englishRegex = /^[a-zA-Z\s]+$/;
+      return englishRegex.test(text);
+    };
 
     return (
       <>
@@ -69,7 +77,9 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
             {title.overview && title.overview.split('. ')[0] + '.'} </p>
           </div>
           <div className='pt-4 inline-grid grid-cols-4 gap-4'>
-            {episodes.map((episode,index) => (
+            {episodes
+            .slice(0,12)
+            .map((episode,index) => (
               <div key={index}>
                 <div className='w-[100%]'>
                   <img src={`https://image.tmdb.org/t/p/w500/${episode.file_path}`}  alt={`Episode ${index}`} />

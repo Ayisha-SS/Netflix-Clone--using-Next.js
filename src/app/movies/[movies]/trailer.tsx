@@ -15,14 +15,14 @@ interface LogoProps{
   logos:{file_path:string}[];
 }
 interface CastProps{
-  cast:{name:string}[];
+  cast:{original_name:string}[];
 }
 
 export const Trailer:React.FC<TrailerProps>=({movieid})=> {
 
-  const [movieDetails, setMovieDetails] = useState<Trailer | null>([]);
-  const [logoPath,setLogoPath] = useState<LogoProps | null>([]);
-  const [castName,setCastName] = useState<CastProps | null>([]);
+  const [movieDetails, setMovieDetails] = useState<Trailer | null>(null);
+  const [logoPath,setLogoPath] = useState<LogoProps | null>(null);
+  const [castName,setCastName] = useState<CastProps | null>(null);
   const [loading, setLoading] = useState(true);
 
 const Movie = async () =>{
@@ -55,11 +55,12 @@ const Cast = async () => {
   try{
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}/credits?api_key=5bcc0dd557136d5008b5eebbc96092f6`);
     const json = await response.json();
-    setCastName(json);
-    setLoading(false);
+    if(json){
+      setCastName(json);
+      setLoading(false);
+    }
   } catch(error){
         console.error("Error fetching data:",error);
-    
   }
 };
 
@@ -92,7 +93,13 @@ console.log("result:",movieDetails?.original_title);
                   <p>{movieDetails?.overview}</p>
                 </div>
                 <div className='text-base font-normal'>
-                  <p><span className='text-[#a3a3a3] mr-1'>Starring:</span> {castName?.cast?.name}</p>
+                  <p>
+                    <span className='text-[#a3a3a3] mr-1'>Starring:</span>{' '}{castName?.cast && castName.cast.length > 0 ? 
+                    castName.cast
+                    .slice(0,5)
+                    .map((actor) => actor.original_name)
+                    .join(','):'N/A'}
+                  </p>
                 </div>
               </div>
             </div>

@@ -39,7 +39,9 @@ export const MoreSimilar: React.FC<SimilarProps> = ({ movieid }) => {
         <p>Loading...</p> 
       ) : (
         <div className='pt-4 inline-grid grid-cols-4 gap-4'>
-          {similarMovies.map((movie, index) => (
+          {similarMovies
+          .slice(0,12)
+          .map((movie, index) => (
             <div key={index}>
               <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt={`similar movie ${index}`} />
             </div>

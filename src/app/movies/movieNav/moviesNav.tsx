@@ -4,9 +4,8 @@ import NetflixLogo from "../../../../public/images/netflix-logo.png"
 import Image from 'next/image'
 import Button from '@/app/_component/general/button'
 import Link from 'next/link'
-
 import { auth } from '../../../../lib/firebase/firebase'
-import { signOut } from 'firebase/auth'
+
 
 export default function MoviesNavbar() {
 
@@ -18,7 +17,6 @@ const logout = () =>{
     <>
         <div className='bg-black '>
             <div className='flex justify-between movies-wrapper'>
-                {/* <div className='flex justify-between'> */}
                 <div className='w-36 cursor-pointer'>
                     <Link href="/main">
                     <Image src={NetflixLogo} alt='Netflix-Logo'/></Link>
@@ -29,13 +27,9 @@ const logout = () =>{
                         <Link href="/main">
                             <Button label='JOIN NOW' className='bg-red-600 text-white py-2 px-6 text-xs rounded-sm'/>
                         </Link>
-                        {/* <Link href="/login"> */}
-                            <Button label='SIGN OUT' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border' onClick={logout}/>
-                            {/* <Button label='SIGN IN' className='bg-transparent text-white py-2 rounded-sm px-6 text-xs border'/> */}
-                        {/* </Link> */}
+                            <Button label='SIGN OUT' className='bg-transparent text-white py-1 rounded-sm px-6 text-xs border' onClick={logout}/>
                     </div>
                 </div>
-                {/* </div> */}
             </div>
         </div>
     </>

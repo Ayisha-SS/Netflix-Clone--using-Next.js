@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import MoviesNavbar from '../movieNav/moviesNav'
 import { Videos } from './videos'
@@ -6,9 +7,11 @@ import { Episodes } from './episodes'
 import { MoreSimilar }  from './similar'
 import FooterCntnt from '@/app/main/footer/components/footerCntnt'
 import MovieFooter from '../footer/page'
+import { UpcomingMovies } from './upcoming'
+import MovieDetails from './rough';
 
 
-export default function MovieTrailer({params}:{params :{movies:string}}){
+export default function MovieTrailer({params}:{params :{movies:number}}){
  
   return (
     <div >
@@ -18,10 +21,13 @@ export default function MovieTrailer({params}:{params :{movies:string}}){
           <Videos movieid={params.movies}/>
           <Episodes movieid={params.movies}/>
           <MoreSimilar movieid={params.movies} />
+          <UpcomingMovies movieid={params.movies}/>
           </div>
           <div className=' bg-[#181818]'>
             <MovieFooter/>
           </div>
+
+          {/* <MovieDetails movieid={params.movies}/> */}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import Button from '@/app/_component/general/button'
 import React from 'react'
 import {FaAngleRight} from "react-icons/fa6"
+import Link from 'next/link'
 
 export default function Content() {
   return (
@@ -20,7 +21,7 @@ export default function Content() {
                    <input type="text" placeholder='Email address' className='bg-transparent font-sans outline-none' />
                 </form>
                 <div className='flex ml-2 bg-red-600 rounded-[4px] text-white  max-sm:py-[10px] max-sm:px-3 max-md:py-[10px] max-md:px-4 py-3 px-8 '>
-                    <Button label='Get started' icon={<FaAngleRight/>} className='flex items-center gap-1  font-sans font-normal max-sm:text-xl max-md:text-xl text-2xl'/>  
+                    <Link href='/login'><Button label='Get started' icon={<FaAngleRight/>} className='flex items-center gap-1  font-sans font-normal max-sm:text-xl max-md:text-xl text-2xl'/></Link>  
                 </div>
             </div>
         </div>
