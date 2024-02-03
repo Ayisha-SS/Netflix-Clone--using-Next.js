@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react'
 import Button from '@/app/_component/general/button'
+import Link from 'next/link';
 
 interface TrailerProps {
 	movieid:number;
@@ -110,7 +111,7 @@ console.log("result:",movieDetails?.original_title);
                 </div>
                 <h3 className='text-white font-sans text-base'>Watch all you want.</h3>
               </div> 
-              <Button label='JOIN NOW' className='bg-red-600 text-white py-3 px-6 text-sm rounded'/>
+              <Link href='/login'><Button label='JOIN NOW' className='bg-red-600 text-white py-3 px-6 text-sm rounded'/></Link>
             </div>
           </div>
           </div>

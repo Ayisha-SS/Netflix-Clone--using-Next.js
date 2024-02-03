@@ -8,7 +8,6 @@ import { MoreSimilar }  from './similar'
 import FooterCntnt from '@/app/main/footer/components/footerCntnt'
 import MovieFooter from '../footer/page'
 import { UpcomingMovies } from './upcoming'
-import MovieDetails from './rough';
 
 
 export default function MovieTrailer({params}:{params :{movies:number}}){
@@ -19,6 +18,7 @@ export default function MovieTrailer({params}:{params :{movies:number}}){
         <Trailer movieid={params.movies}/>
         <div className='bg-[#181818]'>
           <Videos movieid={params.movies}/>
+          {/* {Videos !== null && <Videos movieid={params.movies} />} */}
           <Episodes movieid={params.movies}/>
           <MoreSimilar movieid={params.movies} />
           <UpcomingMovies movieid={params.movies}/>
@@ -27,7 +27,6 @@ export default function MovieTrailer({params}:{params :{movies:number}}){
             <MovieFooter/>
           </div>
 
-          {/* <MovieDetails movieid={params.movies}/> */}
     </div>
   )
 }

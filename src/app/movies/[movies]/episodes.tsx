@@ -58,11 +58,15 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
       return englishRegex.test(text);
     };
 
+    if(loading || !episodes || episodes.length === 0){
+      return null;
+    }
+
     return (
       <>
         <div className='pt-[30px] pb-[50px] trailer-wrapper text-white'>
           <div className='font-sans mb-[10px]'>
-            <h2 className='text-white font-medium text-3xl'>
+            <h2 className='text-white font-medium text-3xl mt-4'>
               Episodes
               <span className='text-[#a3a3a3] ml-1 mr-2 '>|</span>
               <span className='text-[#a3a3a3] text-xl font-normal'>{title.original_title}</span>
@@ -79,6 +83,7 @@ export const Episodes:React.FC<SimilarProps> = ({movieid}) => {
           <div className='pt-4 inline-grid grid-cols-4 gap-4'>
             {episodes
             .slice(0,12)
+            .filter((episode) => episode.file_path)
             .map((episode,index) => (
               <div key={index}>
                 <div className='w-[100%]'>

@@ -29,11 +29,15 @@ export const MoreSimilar: React.FC<SimilarProps> = ({ movieid }) => {
   },[movieid]);
   console.log("Similar Movies:", similarMovies);
 
+  if(loading || !similarMovies || similarMovies.length === 0){
+    return null;
+  }
+
   return (
     
     <div className='pt-[50px] trailer-wrapper pb-[50px]'>
       <div>
-        <h3 className='text-white font-medium text-3xl'>More Like This</h3>
+        <h3 className='text-white font-medium text-3xl mt-4'>More Like This</h3>
       </div>
       {loading ? (
         <p>Loading...</p> 
@@ -41,6 +45,7 @@ export const MoreSimilar: React.FC<SimilarProps> = ({ movieid }) => {
         <div className='pt-4 inline-grid grid-cols-4 gap-4'>
           {similarMovies
           .slice(0,12)
+          .filter((movie) => movie.backdrop_path)
           .map((movie, index) => (
             <div key={index}>
               <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt={`similar movie ${index}`} />

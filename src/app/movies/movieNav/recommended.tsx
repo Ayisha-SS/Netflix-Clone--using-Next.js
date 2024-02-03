@@ -1,11 +1,11 @@
 "use client" 
 import React from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { MovieSlider } from "../general/slider";
 import MovieFooter from "../footer/page";
 
 export default function Recommended() {
-  const navigation = useRouter();
+  // const navigation = useRouter();
 const movieSliderData = [
     {genreId:16},
     {genreId:28},
@@ -19,10 +19,13 @@ const movieSliderData = [
     {genreId:99},   
 ];
 
+
   return (
     <>
       <div className="pt-10">
-        {movieSliderData.map((sliderData,index) => (
+        {movieSliderData
+        .filter((sliderData) => sliderData)
+        .map((sliderData,index) => (
             <MovieSlider key={index} genreId={sliderData.genreId} />
         ))}
       </div>
