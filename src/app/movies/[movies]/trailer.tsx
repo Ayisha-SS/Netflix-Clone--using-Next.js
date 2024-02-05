@@ -81,7 +81,7 @@ export const Trailer: React.FC<TrailerProps> = ({ movieid }) => {
             {
                 loading ? <p>loading....</p> :
                     <div className='relative h-screen ' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                        <div className='absolute z-[1] w-full h-full bg-gradient-to-r from-[#181818] via-[hsla(0,0%,9%,.98)] to-[hsla(0,0%,9%,0)]'>
+                        <div className='absolute z-[1] w-full h-full bg-gradient-to-r from-[#181818] via-[hsla(0,0%,9%,.94)] to-[hsla(0,0%,9%,0)]'>
                             <div className='trailer-wrapper z-[1] pt-[120px] '>
                                 <div className='flex flex-col justify-center w-full'>
                                     <div className='w-[30%] mb-[50px] bg-cover'>

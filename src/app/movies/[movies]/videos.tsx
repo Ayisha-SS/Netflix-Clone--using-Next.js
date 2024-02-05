@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,6 +30,7 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
     });
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
+// video popup modal...
     const openModal = (videoKey: string) => {
         setSelectedVideo(videoKey);
         document.body.style.overflow = 'hidden';
@@ -40,6 +41,7 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
         document.body.style.overflow = 'auto'
     };
 
+// fetch video...
     const getVideo = async () => {
         try {
             const response = await fetch(
@@ -54,7 +56,8 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
         }
     };
 
-    const Title = async () => {
+// fetch title...
+    const Title =  async () => {
         try {
             const response = await fetch(
                 `https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`
@@ -69,12 +72,13 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
     };
 
     useEffect(() => {
-        Promise.all([getVideo(), Title()])
+        Promise.all([getVideo(),Title()])
             .then(() => {
                 setLoading(false);
             });
     }, [movieid]);
 
+// slider
     const settings = {
         dots: false,
         infinite: false,
@@ -83,6 +87,7 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
         slidesToScroll: 2.2,
     };
 
+// loading condition...
     if (loading || !videos || videos.results.length === 0) {
         return null;
     }
@@ -142,7 +147,8 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
                     </div>
                 </div>
             </div>
-
+ 
+ {/* popup modal */}
             {selectedVideo && (
                 <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
                     <div className="relative p-8  w-full max-w-screen-md overflow-auto">
