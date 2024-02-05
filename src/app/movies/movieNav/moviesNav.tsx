@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import NetflixLogo from "../../../../public/images/netflix-logo.png"
 import Image from 'next/image'

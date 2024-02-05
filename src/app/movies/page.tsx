@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import MoviesNavbar from './movieNav/moviesNav'
 import Recommended from './movieNav/recommended'

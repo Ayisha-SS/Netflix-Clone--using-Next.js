@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import Spotlight from './spotlight/components/page'
 import EnjoyOnTv from './EnjoyOnTv/component/page'
