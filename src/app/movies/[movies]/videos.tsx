@@ -120,8 +120,8 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
                                                     video.type.toLowerCase() === "trailer"
                                             )
                                             .map((video, index) => (
-                                                <li key={index} onClick={() => openModal(video.key)}>
-                                                    <div className="relative">
+                                                <li key={index} onClick={() => openModal(video.key)} className="flex items-start">
+                                                    <div className="relative flex">
                                                         {video.site.toLowerCase() === "youtube" &&
                                                             video.type.toLowerCase() === "trailer" && (
                                                                 <img
@@ -144,13 +144,12 @@ export const Videos: React.FC<SimilarProps> = ({ movieid }) => {
             </div>
 
             {selectedVideo && (
-                <div className="fixed inset-0 z-50 overflow-hidden bg-black bg-opacity-70 flex items-center justify-center">
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
                     <div className="relative p-8  w-full max-w-screen-md overflow-auto">
                         <button
                             className="absolute top-0 right-0 text-white cursor-pointer"
-                            onClick={closeModal}
-                        >
-                            Close
+                            onClick={closeModal}>
+                            &times;
                         </button>
                         <iframe
                             title={selectedVideo}

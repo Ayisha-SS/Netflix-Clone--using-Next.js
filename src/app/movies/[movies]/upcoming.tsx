@@ -50,6 +50,9 @@ export const UpcomingMovies: React.FC<SimilarProps> = ({ movieid }) => {
                 <div className='pb-4'>
                     <h2 className='text-4xl text-white font-sans font-medium '>Coming soon</h2>
                 </div>
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
                 <div className='pt-3 inline-grid grid-cols-4 gap-2'>
                     {upcoming && upcoming.results
                         .filter((movie) => isEnglish(movie.original_title))
@@ -61,6 +64,7 @@ export const UpcomingMovies: React.FC<SimilarProps> = ({ movieid }) => {
                             </div>
                         ))}
                 </div>
+                )}
             </div>
         </>
     )

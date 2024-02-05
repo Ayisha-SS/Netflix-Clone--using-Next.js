@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface SimilarProps {
     movieid: number;
@@ -14,8 +15,8 @@ export const MoreSimilar: React.FC<SimilarProps> = ({ movieid }) => {
 
     const similar = async () => {
         try {
-            const response = await fetch(`
-      https://api.themoviedb.org/3/movie/${movieid}/similar?api_key=5bcc0dd557136d5008b5eebbc96092f6`
+            const response = await fetch(
+                `https://api.themoviedb.org/3/movie/${movieid}/similar?api_key=5bcc0dd557136d5008b5eebbc96092f6`
             )
             const json = await response.json();
             setSimilarMovies(json.results || []);

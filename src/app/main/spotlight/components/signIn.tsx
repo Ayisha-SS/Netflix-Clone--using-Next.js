@@ -7,7 +7,7 @@ export default function SignIn() {
     <>
         <div className='max-sm:flex'>
           <Link href="/login">
-            <Button label='Sign In' className='box-border  rounded py-1 font-sans px-3 inline-flex justify-center tracking-normal'/>
+            <Button label='Sign In' className='box-border text-base rounded py-1 font-sans px-4 inline-flex justify-center tracking-normal'/>
           </Link>
         </div>
     </>

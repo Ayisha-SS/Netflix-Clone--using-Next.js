@@ -8,7 +8,6 @@ interface TrailerProps {
 interface Trailer {
     original_title: string;
     overview: string;
-    poster_path: string;
     backdrop_path: string;
 }
 interface LogoProps {
@@ -82,11 +81,11 @@ export const Trailer: React.FC<TrailerProps> = ({ movieid }) => {
             {
                 loading ? <p>loading....</p> :
                     <div className='relative h-screen ' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${movieDetails?.backdrop_path}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                        <div className='absolute z-[1] w-full h-full bg-black bg-opacity-70 '>
+                        <div className='absolute z-[1] w-full h-full bg-gradient-to-r from-[#181818] via-[hsla(0,0%,9%,.98)] to-[hsla(0,0%,9%,0)]'>
                             <div className='trailer-wrapper z-[1] pt-[120px] '>
                                 <div className='flex flex-col justify-center w-full'>
-                                    <div className='w-[30%] mb-[50px]'>
-                                        {logoPath && logoPath.logos && logoPath.logos[0] && (<img src={`https://image.tmdb.org/t/p/original/${logoPath?.logos[0]?.file_path}`} alt="Logo" width={170} />)}
+                                    <div className='w-[30%] mb-[50px] bg-cover'>
+                                        {logoPath && logoPath.logos && logoPath.logos[0] && ( <img src={`https://image.tmdb.org/t/p/original/${logoPath?.logos[0]?.file_path}`} alt="Logo" width={170} /> )}
                                     </div>
 
                                     <div className='pt-[20px] pb-[30%]'>
@@ -100,7 +99,8 @@ export const Trailer: React.FC<TrailerProps> = ({ movieid }) => {
                                             </div>
                                             <div className='text-base font-normal'>
                                                 <p>
-                                                    <span className='text-[#a3a3a3] mr-1'>Starring:</span>{' '}{castName?.cast && castName.cast.length > 0 ?
+                                                    <span className='text-[#a3a3a3] mr-1'>Starring:</span>{' '}
+                                                        {castName?.cast && castName.cast.length > 0 ?
                                                         castName.cast
                                                             .slice(0, 5)
                                                             .map((actor) => actor.original_name)
@@ -124,7 +124,7 @@ export const Trailer: React.FC<TrailerProps> = ({ movieid }) => {
                     </div>
             }
         </>
-    )
-}
+    );
+};
 
 export default Trailer;

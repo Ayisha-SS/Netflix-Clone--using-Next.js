@@ -24,8 +24,8 @@ export const Episodes: React.FC<SimilarProps> = ({ movieid }) => {
 
     const fetchEpisodes = async () => {
         try {
-            const response = await fetch(`
-          https://api.themoviedb.org/3/movie/${movieid}/images?api_key=5bcc0dd557136d5008b5eebbc96092f6`
+            const response = await fetch(
+                `https://api.themoviedb.org/3/movie/${movieid}/images?api_key=5bcc0dd557136d5008b5eebbc96092f6`
             )
             const json = await response.json();
             setEpisodes(json.backdrops || []);
@@ -38,7 +38,9 @@ export const Episodes: React.FC<SimilarProps> = ({ movieid }) => {
 
     const fetchTitle = async () => {
         try {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`)
+            const response = await fetch(
+                `https://api.themoviedb.org/3/movie/${movieid}?api_key=5bcc0dd557136d5008b5eebbc96092f6`
+            )
             const json = await response.json();
             setTitle(json);
             setLoading(false);
@@ -70,7 +72,7 @@ export const Episodes: React.FC<SimilarProps> = ({ movieid }) => {
                 <div className='font-sans mb-[10px]'>
                     <h2 className='text-white font-medium text-3xl mt-4'>
                         Episodes
-                        <span className='text-[#a3a3a3] ml-1 mr-2 '>|</span>
+                        <span className='text-[#a3a3a3] ml-1 mr-2'>|</span>
                         <span className='text-[#a3a3a3] text-xl font-normal'>{title.original_title}</span>
                     </h2>
                 </div>
@@ -104,4 +106,3 @@ export const Episodes: React.FC<SimilarProps> = ({ movieid }) => {
         </>
     );
 }
-
